@@ -1,7 +1,12 @@
 body {
-	background: url("wood_1.png");
+	background: url("tileable_wood_texture.png");
 	}
 
 h1 {
+	color: white;
+}
+
+.card-header {
+	background: #343a40;
 	color: white;
 }

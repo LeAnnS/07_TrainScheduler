@@ -7,14 +7,15 @@
 	<!--  Linking Bootstrap -->
   	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
 
+	<!-- Firebase Reference -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
 
 	<!-- Linking jQuery -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
 
-	<!-- Firebase Reference -->
-    <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
+	
 
     <!-- Moment.js Reference -->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
@@ -33,18 +34,72 @@
 	<!-- Jumbotron holds the title section -->
 	<div class="jumbotron" style="background: teal; color: black;">
 		<div class="container">
-			<h1 class="text-center">Sawatzky Station Train Schedule</h1>
+			<h1 class="text-center"><strong>Sawatzky Station Train Schedule</strong></h1>
 			<h3 class="text-center">Chug-a-Chug-a, Choo-Choo</h3>
 		</div>
 	</div>
 
-	<!-- This div holds the Train Schedule -->
-	<div class="schedule">
+	<div class="row">
+
+		<div class="col-lg-12">
+
+			<!-- This div holds the Train Schedule -->
+			<div class="card card-primary">
+				<div class="card-header">
+					<h3 class="card-title text-center">Current Train Schedule</h3>
+				</div>
+				<div class="card-body">
+					<table class="table table-hover" id="train-schedule">
+						<thread>
+							<tr>
+								<th>Train Name</th>
+								<th>Destination</th>
+								<th>Frequency (Minutes)</th>
+								<th>Next Arrival</th>
+								<th>Minutes Away</th>
+							</tr>
+						</thread>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<br>
+			<br>
 
 
-
-	<!-- This div holds the form to enter new trains -->
-	<div class="form"
+			<!-- This div holds the form to enter new trains -->
+			<div class="card card-primary">
+				<div class="card-header">
+					<h3 clas="card-title tet-center">Add Train</h3>
+				</div>
+				<div class="card-body">
+					<!-- Entry Form -->
+					<form>
+						<div class="form-group">
+		                  <label for="train-name-input">Train Name</label>
+		                  <input class="form-control" id="train-name-input" type="text">
+		                </div>
+		                <div class="form-group">
+		                  <label for="dest-input">Destination</label>
+		                  <input class="form-control" id="dest-input" type="text">
+		                </div>
+		                <div class="form-group">
+		                  <label for="start-input">First Train Time (HH:mm - military time)</label>
+		                  <input class="form-control" id="start-input" type="text">
+		                </div>
+		                <div class="form-group">
+		                  <label for="freq-input">Frequency (Min)</label>
+		                  <input class="form-control" id="freq-input" type="text">
+		                </div>
+		                <button class="btn btn-info" id="add-train-btn" type="submit">Submit</button>
+		            </form>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</div>
 
 
 
