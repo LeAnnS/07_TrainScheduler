@@ -1,6 +1,9 @@
 var test = ["js is connected"]
 console.log(test)
 
+// var now = moment();
+// moment();
+// $("#now").exts(now);
 /* global firebase moment */
 // Steps to complete:
 
@@ -26,7 +29,7 @@ $("#add-train-btn").on("click", function(event) {
 	// Grabs user input
 	var trainName = $("#train-name-input").val().trim();
 	var trainDest = $("#dest-input").val().trim();
-	var trainStart = $("#start-input").val().trim();
+	var trainStart = moment($("#start-input").val().trim(), "HH:mm");
 	var trainFreq = $("#freq-input").val().trim();
 
 	// Creates local object for holding train data
@@ -69,18 +72,18 @@ database.ref().on("child_added", function(childSnapshot,prevChildKey) {
 	var trainStart = childSnapshot.val().start;
 	var trainFreq = childSnapshot.val().freq;
 
-	// train info
-	console.log(trainName);
-	console.log(trainDest);
-	console.log(trainStart);
-	console.log(trainFreq);
+	// // train info
+	// console.log(trainName);
+	// console.log(trainDest);
+	// console.log(trainStart);
+	// console.log(trainFreq);
 
 	// calculate the next arrival time
 
 	// calculate the minutes away time
 
 
-	// add train's data to the table
+	// add train's data to the table in html file
 	$("#train-schedule > tbody").append("<tr><td>" + trainName + "</td><td>" + trainDest + "</td><td>" + trainFreq + "</td></tr>");
 });
 
