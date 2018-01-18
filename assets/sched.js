@@ -1,11 +1,12 @@
 var test = ["js is connected"]
 console.log(test)
 
-// var now = moment();
-// moment();
-// $("#now").exts(now);
+// Add current time to schedule board
+var currentTime = moment();
+	console.log("CURRENT TIME: " + moment(currentTime).format("HH:mm"));
+$("#now").text(currentTime);
+
 /* global firebase moment */
-// Steps to complete:
 
 // 1. Initialize Firebase
 var config = {
@@ -29,7 +30,7 @@ $("#add-train-btn").on("click", function(event) {
 	// Grabs user input
 	var trainName = $("#train-name-input").val().trim();
 	var trainDest = $("#dest-input").val().trim();
-	var trainStart = moment($("#start-input").val().trim(), "HH:mm");
+	var trainStart = moment($("#start-input").val().trim(), "HH:mm").format("X");
 	var trainFreq = $("#freq-input").val().trim();
 
 	// Creates local object for holding train data
@@ -78,9 +79,25 @@ database.ref().on("child_added", function(childSnapshot,prevChildKey) {
 	// console.log(trainStart);
 	// console.log(trainFreq);
 
-	// calculate the next arrival time
+	// Set first time (push back 1 year to ensure it is before current time)
+	var startTimeOrig = moment(trainStart, "hh:mm").subtract(1, "years");
+		console.log("Original start time: " + startTimeOrig);
 
-	// calculate the minutes away time
+	// calculate the difference between the start time & the current time
+	var diffTime = moment().diff(moment(startTimeOrig), "minutes");
+		console.log("Difference in time: " + diffTime);
+
+	// calculate the remainder minutes from the last train
+	var minRemainder = diffTime % trainFreq;
+		console.log("Minutes since last Train: " + minRemainder);
+
+	// calculate the minutes until the next train
+	var minTillNext = trainFreq - minRemainder;
+		console.log("Minutes until next Train: " + minTillNext);
+
+	// calculate the next arrival time
+	var nextTrain = moment().add(minTillNext, "minutes");
+		console.log("Arrival Time: " + moment(nextTrain).format("HH:mm"));
 
 
 	// add train's data to the table in html file
