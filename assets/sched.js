@@ -41,8 +41,6 @@ $("#add-train-btn").on("click", function(event) {
 		dest: trainDest,
 		start: trainStart,
 		freq: trainFreq,
-		// next: nextTrain,
-		// minRem: minTillNext,
 	};
 
 		console.log(newTrain);
@@ -78,9 +76,7 @@ database.ref().on("child_added", function(childSnapshot,prevChildKey) {
 	var trainDest = childSnapshot.val().dest;
 	var trainStart = childSnapshot.val().start;
 	var trainFreq = childSnapshot.val().freq;
-	// var nextTrain = childSnapshot.val().next;
-	// var minTillNext = childSnapshot.val().minRem;
-
+	
 	// // train info
 	// console.log(trainName);
 	// console.log(trainDest);
